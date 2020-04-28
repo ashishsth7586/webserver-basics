@@ -19,7 +19,9 @@ class EchoHandler(BaseHTTPRequestHandler):
 		self.end_headers()
 		
 		# Third, send the response body
-		self.wfile.write(self.path[1:].encode()) # for /balloon it returns balloon
+		message = self.path[1:] # for /balloon it returns balloon
+		message_bytes_object = message.encode()
+		self.wfile.write(message_bytes_object)
 
 if __name__ == "__main__":
 	server_address = ('', 8000)
